@@ -1,0 +1,5 @@
+Flask==3.1.0
+confluent-kafka==2.8.0
+flask-socketio==5.5.1
+eventlet==0.39.0
+python-decouple==3.8
