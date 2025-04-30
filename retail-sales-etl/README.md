@@ -4,7 +4,7 @@
 This project implements an end-to-end data pipeline for processing retail sales data using modern data stack technologies. The pipeline extracts raw sales data, transforms it into a dimensional model, and loads it into a PostgreSQL database for analysis.
 
 ## Architecture
-![Architecture](https://raw.githubusercontent.com/username/retail-sales-etl/main/docs/architecture.png)
+![Architecture](https://github.com/Debyvypth1862/Data-Engineering-Projects/blob/main/retail-sales-etl/docs/architecture.md)
 
 ### Technologies Used
 - **Apache Airflow**: Orchestrates the ETL workflow
