@@ -25,3 +25,37 @@ graph LR
     style PS fill:#fdd,stroke:#333,stroke-width:2px
     style DW fill:#ddf,stroke:#333,stroke-width:2px
 ```
+```
+                                Apache Airflow
+                              +---------------+
+                              |               |
+                              | retail_etl_dag|
+                              |     (DAG)     |
+                              |               |
+                              +-------+-------+
+                                      |
+          +-------------------------+-+------------------------+
+          |                         |                         |
+          v                         v                         v
++------------------+    +--------------------+    +----------------------+
+|                  |    |                    |    |       dbt           |
+|   Raw Sales      +--->|    PostgreSQL     +--->|   Transformation    |
+|     (CSV)        |    |    Database       |    |                     |
+|                  |    |                    |    | [staging]           |
++------------------+    +--------------------+    | - stg_sales         |
+                                                 |                      |
+                                                 | [marts]             |
+                                                 | - dim_customers     |
+                                                 | - dim_products      |
+                                                 | - fact_sales        |
+                                                 |                     |
+                                                 +----------+----------+
+                                                            |
+                                                            v
+                                                 +----------+-----------+
+                                                 |                      |
+                                                 |   Data Warehouse     |
+                                                 |    (PostgreSQL)      |
+                                                 |                      |
+                                                 +----------------------+
+```
