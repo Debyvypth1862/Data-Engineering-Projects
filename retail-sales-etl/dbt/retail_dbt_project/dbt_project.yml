@@ -1,0 +1,10 @@
+name: 'retail_dbt_project'
+version: '1.0'
+profile: 'default'
+
+models:
+  retail_dbt_project:
+    staging:
+      materialized: view
+    marts:
+      materialized: table
