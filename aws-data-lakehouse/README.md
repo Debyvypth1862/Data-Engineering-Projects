@@ -6,6 +6,7 @@
 ![Glue](https://img.shields.io/badge/Glue-4053D6?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![Athena](https://img.shields.io/badge/Athena-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![Step Functions](https://img.shields.io/badge/Step%20Functions-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![QuickSight](https://img.shields.io/badge/QuickSight-00A1C9?style=for-the-badge&logo=amazonaws&logoColor=white)
 
 ## Project Overview
 
@@ -18,6 +19,7 @@ This project implements a serverless data lakehouse architecture on AWS to deliv
 - **Optimized Query Performance**: Data stored in analytics-optimized formats
 - **Incremental Processing**: 7-day rolling window to manage Athena query timeouts
 - **Robust Error Handling**: Automatic retries and failure notifications
+- **Interactive Dashboards**: Real-time marketing insights via QuickSight visualizations
 
 ## Solution Architecture
 
@@ -26,6 +28,7 @@ The solution follows modern data lakehouse principles with distinct data layers:
 - **Bronze Layer**: Raw JSON data from Affise API stored in S3
 - **Silver Layer**: Processed/transformed data in Parquet format
 - **Gold Layer**: Analytics-ready data in Athena tables
+- **Presentation Layer**: Interactive QuickSight dashboards for business users
 
 ### Step Function Workflow
 
@@ -56,8 +59,26 @@ The solution follows modern data lakehouse principles with distinct data layers:
    - Queries the final dataset from Athena
    - Formats data as CSV with proper column ordering and escaping
    - Uploads report to S3 for Marketing team access
+   - Data made available for QuickSight dashboard refreshes
 
 6. **End**
+
+## Dashboard & Analytics
+
+The culmination of the data pipeline is an interactive QuickSight dashboard that provides critical marketing insights:
+
+![Dashboard Preview](./Dashboard/QuickSight-Dashboard.pptx.pdf)
+
+### Key Dashboard Features
+
+- **Daily Performance Metrics**: Conversion rates, click-through rates, and revenue by day
+- **Campaign Effectiveness**: Campaign performance analysis across different affiliates
+- **Geographic Analysis**: Country-level performance metrics with regional breakdowns
+- **Advertiser ROI Tracking**: Revenue and conversion metrics by advertiser
+- **Trend Analysis**: Historical performance with period-over-period comparisons
+- **Filtering Capabilities**: Dynamic filters for dates, campaigns, affiliates, and more
+
+The dashboard is refreshed automatically when new data becomes available through the twice-daily pipeline runs, ensuring marketing teams always have access to the latest insights.
 
 ## Technical Implementation
 
@@ -96,6 +117,8 @@ The pipeline runs twice daily via EventBridge:
 - **Morning Report**: 9:00 AM (Server Time)
 - **Afternoon Update**: 2:00 PM (Server Time)
 
+These scheduled runs ensure the QuickSight dashboards reflect up-to-date marketing performance metrics throughout the business day.
+
 ### Monitoring & Error Handling
 
 - Step Functions execution tracking with visual workflow monitoring
@@ -126,6 +149,16 @@ Complex SQL transformations for reporting:
 - Calculate performance metrics
 - Filter and format for business requirements
 
+### QuickSight Setup
+
+The QuickSight dashboards are configured to:
+
+- Connect directly to Athena data sources
+- Use SPICE for accelerated dashboard performance
+- Support row-level security for team-specific data views
+- Provide email alerts for key performance metrics
+- Enable scheduled report distribution to stakeholders
+
 ## Development and Deployment
 
 ### Prerequisites
@@ -133,6 +166,7 @@ Complex SQL transformations for reporting:
 - AWS CLI configured with appropriate permissions
 - Docker for Lambda function container builds
 - Access to Affise API credentials
+- QuickSight Enterprise subscription
 
 ### Deployment Steps
 
@@ -141,17 +175,18 @@ Complex SQL transformations for reporting:
 3. Create Glue jobs for ETL processing
 4. Configure Step Functions workflow
 5. Set up EventBridge triggers for scheduling
+6. Configure QuickSight datasets and dashboards
 
 ## Future Enhancements
 
 1. **Data Quality Monitoring**: Add automated data quality checks
-2. **Dashboard Integration**: Connect with QuickSight for interactive visualizations
+2. **Dashboard Extensions**: Add additional QuickSight dashboards for deeper marketing insights
 3. **Real-time Processing**: Add streaming capabilities for near real-time insights
 4. **Enhanced Alerting**: Implement SNS notifications for critical failures
+5. **ML Integration**: Incorporate predictive analytics for campaign performance
 
 ## Schedule & Execution
 
 ⏰ **Frequency**: Twice daily
 ⏱️ **Execution Times**: 9:00 AM and 2:00 PM (Server Time)
 🔄 **Configuration**: EventBridge rules trigger Step Functions workflow
-
