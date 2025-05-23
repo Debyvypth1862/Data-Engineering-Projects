@@ -67,7 +67,7 @@ The solution follows modern data lakehouse principles with distinct data layers:
 
 The culmination of the data pipeline is an interactive QuickSight dashboard that provides critical marketing insights:
 
-![Dashboard Preview](./Dashboard/QuickSight-Dashboard.pptx.pdf)
+![Dashboard Preview](https://github.com/Debyvypth1862/Data-Engineering-Projects/blob/main/aws-data-lakehouse/Dashboard/QuickSight%20-Dashboard.pptx.pdf)
 
 ### Key Dashboard Features
 
