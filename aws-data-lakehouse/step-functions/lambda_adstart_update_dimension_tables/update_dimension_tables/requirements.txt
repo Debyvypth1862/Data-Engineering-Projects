@@ -1,0 +1,4 @@
+boto3
+requests==2.28.1
+fsspec
+s3fs
