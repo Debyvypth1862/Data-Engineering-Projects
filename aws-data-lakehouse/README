@@ -155,4 +155,3 @@ Complex SQL transformations for reporting:
 ⏱️ **Execution Times**: 9:00 AM and 2:00 PM (Server Time)
 🔄 **Configuration**: EventBridge rules trigger Step Functions workflow
 
----
