@@ -20,12 +20,6 @@ This project demonstrates a comprehensive end-to-end Data Warehouse and Business
 - **BI Dashboards**: Interactive Power BI visualizations
 - **Ad-Hoc Analysis**: SQL queries for advanced analytics
 
-## Dashboard Highlights
-
-![Orders Overview Dashboard](./Dashboard/powerbi_retail.png)
-
-The main Power BI dashboard delivers a comprehensive "Orders Overview" that provides stakeholders with essential insights:
-
 ### Key Metrics
 
 - **Total Orders Amount**: $465.44M in total revenue
